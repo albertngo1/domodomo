@@ -70,7 +70,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-class DOMNodeCollection {
+  class DOMNodeCollection {
   constructor(nodes) {
     this.nodes = nodes;
   }
@@ -111,15 +111,15 @@ class DOMNodeCollection {
     }
   }
 
-  addClass(newClass) {
+  addClass(klass) {
     this.nodes.forEach( (el) => {
-      el.classList.add(newClass);
+      el.classList.add(klass);
     });
   }
 
-  removeClass(oldClass) {
+  removeClass(klass) {
     this.nodes.forEach( (el) => {
-      el.classList.remove(oldClass);
+      el.classList.remove(klass);
     });
   }
 
@@ -205,10 +205,8 @@ $l.extend = function (obj1, ...objs) {
 
 $l.ajax = function (options) {
   defaults = {
-    success: (data) => {
-      console.log(data);
-    },
-    error: () => console.error("An error occurred."),
+    success: (data) => {},
+    error: () => {},
     url: document.URL,
     method: 'GET',
     data: {},

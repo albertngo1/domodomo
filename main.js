@@ -28,10 +28,8 @@ $l.extend = function (obj1, ...objs) {
 
 $l.ajax = function (options) {
   defaults = {
-    success: (data) => {
-      console.log(data);
-    },
-    error: () => console.error("An error occurred."),
+    success: (data) => {},
+    error: () => {},
     url: document.URL,
     method: 'GET',
     data: {},

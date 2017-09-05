@@ -1,4 +1,4 @@
-class DOMNodeCollection {
+  class DOMNodeCollection {
   constructor(nodes) {
     this.nodes = nodes;
   }
@@ -39,15 +39,15 @@ class DOMNodeCollection {
     }
   }
 
-  addClass(newClass) {
+  addClass(klass) {
     this.nodes.forEach( (el) => {
-      el.classList.add(newClass);
+      el.classList.add(klass);
     });
   }
 
-  removeClass(oldClass) {
+  removeClass(klass) {
     this.nodes.forEach( (el) => {
-      el.classList.remove(oldClass);
+      el.classList.remove(klass);
     });
   }
 
