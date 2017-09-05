@@ -9,17 +9,40 @@ Import the `docpelganger.js` source file into your source code. Also include the
 
 ```html
 <head>
-<script src="docpelganger.js"></script>
+<script src="./src/docpelganger.js"></script>
 </head>
 ```
 
+One may also use `webpack -w` in the terminal to bundle the `main.js` and `dom_node_collection.js` files to access the library.
+
 ## API
 
-`$l`
+#### `$l`
 
+`$l` is a wrapper that allows the usage of the docpelganger methods. It can take in the following as arguments:
+- HTML Element objects
+- strings (classes, id, html)
 
+```javascript
+window.$l = function (arg) {
+  if (arg instanceof HTMLElement) {
+    return new DOMNodeCollection([arg]);
+  } else if (typeof arg === "string") {
+    const els = document.querySelectorAll(arg);
+    return new DOMNodeCollection(Array.from(els));
+  } else {
+    if (document.readyState === "complete") {
+      arg();
+    } else {
+      loadedCallbacks.push(arg);
+    }
+  }
+};
+```
+It will parse the arguments into an array-like object (`DOMNodeCollection`)
+which allows for the following methods to be used below.
 
-`DOMNodeCollection`
+The wrapper will also allow queueing up actions to be taken place after the DOM has been fully loaded, preventing side effects from occuring.
 
 
 #### `DOMNodeCollection` methods
@@ -49,4 +72,24 @@ Import the `docpelganger.js` source file into your source code. Also include the
 * Returns the parent nodes of the current `DOMNodeCollection`.
 
 `find(selector)`
-* 
+* Finds nodes that meet the argument criteria.
+
+`remove()`
+* Removes HTML of all nodes in the DOM as well as the nodes themselves from the array.
+
+#### Event Listeners
+
+`on(type, callback)`
+* Takes in a type of event handler and the callback and applies it to a `DOMNodeCollection`.
+
+`off(type)`
+* Removes passed in event handler from the `DOMNodeCollection`.
+
+#### AJAX
+
+An AJAX call can be made by sending a HTTP request with an options hash containing the following:
+  - method
+  - url
+  - contentType
+  - success
+  - error

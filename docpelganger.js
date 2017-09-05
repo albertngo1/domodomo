@@ -205,9 +205,9 @@ $l.extend = function (obj1, ...objs) {
 
 $l.ajax = function (options) {
   defaults = {
-    success: (data) => {},
+    success: () => {},
     error: () => {},
-    url: document.URL,
+    url: "",
     method: 'GET',
     data: {},
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -215,9 +215,9 @@ $l.ajax = function (options) {
   $l.extend(defaults, options);
 
   const xhr = new XMLHttpRequest();
-  xhr.open(defaults.method, defaults.url);
-  xhr.onload = (() => defaults.success(JSON.parse(xhr.response)));
-  xhr.send(defaults.data);
+  xhr.open(options.method, options.url);
+  xhr.onload = (() => options.success(JSON.parse(xhr.response)));
+  xhr.send(JSON.stringify(options.data));
 };
 
 document.addEventListener("DOMContentLoaded", () => {
