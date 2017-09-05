@@ -87,9 +87,21 @@ The wrapper will also allow queueing up actions to be taken place after the DOM 
 
 #### AJAX
 
-An AJAX call can be made by sending a HTTP request with an options hash containing the following:
-  - method
-  - url
-  - contentType
-  - success
-  - error
+An AJAX call can be made by sending a HTTP request with options containing the following:
+
+```javascript
+defaults = {
+  success: () => {},
+  error: () => {},
+  url: "",
+  method: 'GET',
+  data: {},
+  contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+};  
+```
+The options merge with the defaults to achieve the desired request.
+
+
+### Live Example
+
+A showcase of the library is shown here.
