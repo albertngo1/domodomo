@@ -1,15 +1,15 @@
-# docPELGANGER
+# DOMODOMO
 
-docPELGANGER is a JavaScript library that allows users to manipulate the DOM (Document Object Model) using custom made commands that mimics jQuery in the lightest way possible.
+DOMODOMO is a JavaScript library that allows users to manipulate the DOM (Document Object Model) using custom made commands that mimics jQuery in the lightest way possible.
 
 
 ## To Get Started
 
-Import the `docpelganger.js` source file into your source code. Also include the script into your HTML document.
+Import the `DOMODOMO.js` source file into your source code. Also include the script into your HTML document.
 
 ```html
 <head>
-<script src="./src/docpelganger.js"></script>
+<script src="./src/DOMODOMO.js"></script>
 </head>
 ```
 
@@ -19,7 +19,7 @@ One may also use `webpack -w` in the terminal to bundle the `main.js` and `dom_n
 
 #### `$l`
 
-`$l` is a wrapper that allows the usage of the docpelganger methods. It can take in the following as arguments:
+`$l` is a wrapper that allows the usage of the DOMODOMO methods. It can take in the following as arguments:
 - HTML Element objects
 - strings (classes, id, html)
 
