@@ -1,4 +1,5 @@
-const Snake = require('./snake.js');
+const Game = require('./game.js');
+const GameView = require('./game_view');
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,16 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
   const w = $l('#cv').nodes[0].width;
   const h = $l('#cv').nodes[0].height;
-
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, w, h);
-  ctx.strokeStyle = "black";
-  ctx.strokeRect(0, 0, w, h);
-
-  const snake = new Snake(null, ctx);
+  let game;
 
 
-  setInterval(() => snake.draw(ctx), 60)
-  snake.move();
+  game = new Game(ctx);
+  new GameView(game, ctx).start();
+
+
 
 })
