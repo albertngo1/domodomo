@@ -12,13 +12,21 @@ class Game {
 
   step(delta) {
     const ctx = this.ctx;
-    if (this.gameOver === false) {
-      this.snake.draw(ctx);
-      this.apple[0].draw(ctx);
-      this.snake.move();
-      this.checkCollisionSnake();
-      this.checkCollisionApple();
-      this.checkOutOfBounds();
+    this.snake.draw(ctx);
+    this.apple[0].draw(ctx);
+    this.snake.move();
+    this.checkCollisionSnake();
+    this.checkCollisionApple();
+    this.checkOutOfBounds();
+  }
+
+  checkOutOfBounds() {
+    const snakeHead = [this.snake.snakeLength[0].x * 20, this.snake.snakeLength[0].y * 20];
+    const w = $l('#cv').nodes[0].width;
+    const h = $l('#cv').nodes[0].height;
+    if (snakeHead[0] < 0 || snakeHead[0] > w - 20 ||
+    snakeHead[1] < 0 || snakeHead[1] > h - 20) {
+      this.gameOver = true;
     }
   }
 
@@ -46,7 +54,6 @@ class Game {
   checkCollisionSnake() {
     const snake = this.snake.snakeLength;
     const snakeHead = [snake[0].x, snake[0].y];
-    debugger
     for (let i=1; i < snake.length; i++) {
       if (snakeHead[0] === snake[i].x && snakeHead[1] === snake[i].y) {
         this.gameOver = true;
