@@ -3,6 +3,8 @@
   color: rgb(232, 255, 119);
   font-family: Quicksand;
   transform: translate(15%);
+  user-select: none;
+  cursor: default;
 }
 
 #cv {
@@ -11,4 +13,22 @@
 
 body {
   background-color: rgb(9, 96, 7);
+}
+
+.play  {
+  background: rgb(232, 255, 119);
+  font-family: Quicksand;
+  color: #000000;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  right: -200px;
+  top: -300px;
+}
+
+.play :hover {
+  background-color: rgb(184, 246, 113);
+  text-decoration: none;
 }

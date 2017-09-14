@@ -33,6 +33,9 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -60,40 +63,15 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const Game = __webpack_require__(1);
-const GameView = __webpack_require__(4);
-
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const canvas = document.getElementById("cv");
-  const ctx = canvas.getContext("2d");
-  const w = $l('#cv').nodes[0].width;
-  const h = $l('#cv').nodes[0].height;
-  let game;
-
-
-  game = new Game(ctx);
-  new GameView(game, ctx).start();
-
-
-
-})
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Snake = __webpack_require__(2);
-const Apple = __webpack_require__(3);
+const Snake = __webpack_require__(3);
+const Apple = __webpack_require__(2);
 
 class Game {
 
@@ -167,7 +145,76 @@ module.exports = Game;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+
+
+class GameView {
+  constructor(game, ctx) {
+    this.game = game;
+    this.ctx = ctx;
+  }
+
+  start() {
+    this.lastTime = 0;
+    setInterval(() => this.animate(), 100)
+  }
+
+  animate(time) {
+    let delta = time - this.lastTime;
+
+    if (this.game.gameOver) {
+
+    } else {
+      this.game.step();
+
+    }
+    this.lastTime = time;
+  }
+}
+
+module.exports = GameView;
+
+
+/***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+
+class Apple {
+
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.appleX;
+    this.appleY;
+    this.applePos();
+    this.draw(ctx);
+  }
+
+  applePos() {
+    const w = $l('#cv').nodes[0].width;
+    const h = $l('#cv').nodes[0].height;
+    this.appleX = Math.round((Math.random()*w)/20)*20 - 20;
+    this.appleY = Math.round((Math.random()*h)/20)*20 - 20;
+  }
+
+  draw(ctx) {
+    ctx.fillStyle = "red";
+    ctx.fillRect(this.appleX, this.appleY , 20, 20);
+  }
+
+
+}
+
+
+
+
+module.exports = Apple;
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 class Snake {
@@ -257,72 +304,29 @@ module.exports = Snake;
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-
-class Apple {
-
-  constructor(ctx) {
-    this.ctx = ctx;
-    this.appleX;
-    this.appleY;
-    this.applePos();
-    this.draw(ctx);
-  }
-
-  applePos() {
-    const w = $l('#cv').nodes[0].width;
-    const h = $l('#cv').nodes[0].height;
-    this.appleX = Math.round((Math.random()*w)/20)*20 - 20;
-    this.appleY = Math.round((Math.random()*h)/20)*20 - 20;
-  }
-
-  draw(ctx) {
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.appleX, this.appleY , 20, 20);
-  }
-
-
-}
-
-
-
-
-module.exports = Apple;
-
-
-/***/ }),
 /* 4 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+const Game = __webpack_require__(0);
+const GameView = __webpack_require__(1);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const canvas = document.getElementById("cv");
+  const ctx = canvas.getContext("2d");
+  const w = $l('#cv').nodes[0].width;
+  const h = $l('#cv').nodes[0].height;
+  let game;
+
+  $l('.play').on('click', () => {
+    game = new Game(ctx);
+    new GameView(game, ctx).start();
+  })
 
 
 
-class GameView {
-  constructor(game, ctx) {
-    this.game = game;
-    this.ctx = ctx;
-  }
-
-  start() {
-    this.lastTime = 0;
-    setInterval(() => this.animate(), 100)
-  }
-
-  animate(time) {
-    let delta = time - this.lastTime;
-
-    if (this.game.gameOver) {
-
-    } else {
-      this.game.step();
-
-    }
-    this.lastTime = time;
-  }
-}
-
-module.exports = GameView;
+})
 
 
 /***/ })
