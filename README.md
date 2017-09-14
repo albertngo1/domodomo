@@ -1,6 +1,8 @@
 # DOMODOMO
 
-![Snake Example](/assets/snake_example.gif)
+<p align="center">
+  <img width="460" height="300" src="/assets/snake_example.gif">
+</p>
 
 DOMODOMO is a JavaScript library that allows users to manipulate the DOM (Document Object Model) using custom made commands that mimics jQuery in the lightest way possible.
 
