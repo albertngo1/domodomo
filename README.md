@@ -2,10 +2,12 @@
 
 DOMODOMO is a JavaScript library that allows users to manipulate the DOM (Document Object Model) using custom made commands that mimics jQuery in the lightest way possible.
 
+[Live](https://albertngo1.github.io/domodomo/)
+
 
 ## To Get Started
 
-Import the `DOMODOMO.js` source file into your source code. Also include the script into your HTML document.
+Import the `DOMODOMO.js` source file into your source code from the `src` folder. Also include the script into your HTML document.
 
 ```html
 <head>
@@ -104,4 +106,4 @@ The options merge with the defaults to achieve the desired request.
 
 ### Live Example
 
-A showcase of the library is shown here.
+A showcase of the library is [shown here](https://albertngo1.github.io/domodomo/). The game uses the DOMODOMO library to be able to let you play snake!
