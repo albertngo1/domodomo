@@ -1,0 +1,14 @@
+.title {
+  font-size: 100px;
+  color: rgb(232, 255, 119);
+  font-family: Quicksand;
+  transform: translate(15%);
+}
+
+#cv {
+  transform: translate(85%, 5%);
+}
+
+body {
+  background-color: rgb(9, 96, 7);
+}
