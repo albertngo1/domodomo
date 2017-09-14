@@ -1,3 +1,5 @@
+const DOMNodeCollection = require('./domNodeCollection.js');
+
 const loadedCallbacks = [];
 
 window.$l = function (arg) {
