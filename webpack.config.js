@@ -1,7 +1,8 @@
 module.exports = {
-  entry: "./lib/main.js",
+  entry: "./lib/snake_main.js",
   output: {
     path: __dirname,
-      filename: "./lib/DOMODOMO.js"
-  }
+      filename: "./bundler.js"
+  },
+  devtool: 'source-map'
 };
