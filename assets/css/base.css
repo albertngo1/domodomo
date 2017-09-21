@@ -32,3 +32,67 @@ body {
   background-color: rgb(184, 246, 113);
   text-decoration: none;
 }
+
+.instructions {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(232, 255, 119);
+  position: relative;
+  border-radius: 2px;
+  padding: 7px;
+  top: 100px;
+  left: 165px;
+  font-family: Quicksand;
+}
+
+.footer {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  background: rgb(232, 255, 119);
+  position: relative;
+  border-radius: 2px;
+  padding: 7px;
+  bottom: 200px;
+  left: 185px;
+  font-family: Quicksand;
+}
+.footer > ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.footer > ul > li > a{
+  text-decoration: none;
+  color: black;
+  user-select: none;
+}
+.footer > ul > li > a > i {
+  width: 20px;
+  height: 20px;
+}
+.footer > ul > li > div {
+  height: 100px;
+}
+
+.footer > ul > li > a:hover {
+  text-decoration: none;
+  color: rgb(82, 82, 82);
+}
+
+.my-name {
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  background: rgb(232, 255, 119);
+  position: relative;
+  border-radius: 2px;
+  padding: 7px;
+  bottom: 180px;
+  left: 170px;
+  font-family: Quicksand;
+}
